@@ -2,7 +2,8 @@ FROM centos:7
 
 RUN yum -y install epel-release\
  && yum -y groupinstall "X Window System"\
- && yum -y install tigervnc-server sudo xterm xorg-x11-fonts* motif
+ && yum -y install tigervnc-server sudo xterm xorg-x11-fonts* motif\
+ && yum clean all
 RUN sed -i "s/twm/mwm/g" /etc/X11/xinit/Xclients\
  && sed -i "s/twm/cwm/g" /etc/X11/xinit/xinitrc\
  && sed -i "s/auth\s*required\s*pam_console.so/auth\t   sufficient\tpam_permit.so/" /etc/pam.d/xserver\
